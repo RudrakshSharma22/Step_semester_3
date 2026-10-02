@@ -1,7 +1,9 @@
 abstract class GardenTool {
     GardenTool() {
     }
-    public abstract String use();
+    public String use() {
+        return "Using the tool in the garden";
+    }
 }
 
 class CuttingTool extends GardenTool {
