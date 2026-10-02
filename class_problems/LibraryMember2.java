@@ -73,7 +73,7 @@ class FacultyMember extends LibraryMember {
     }
 }
 
-public class Main {
+public class LibraryMember2 {
     static String classifyGeneration(LibraryMember member) {
         if (member instanceof HonorsStudentMember) {
             return "Multilevel descendant (3 generations deep)";
