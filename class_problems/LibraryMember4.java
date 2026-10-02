@@ -8,16 +8,6 @@ class LibraryMember {
         this.borrowLimit = borrowLimit;
     }
 
-    public void borrowBook() {
-        if (booksBorrowed < borrowLimit) {
-            booksBorrowed++;
-        }
-    }
-
-    public int getBooksBorrowed() {
-        return booksBorrowed;
-    }
-
     public String displayInfo() {
         return "General | Books: " + booksBorrowed;
     }
@@ -34,30 +24,29 @@ class StudentMember extends LibraryMember {
     @Override
     public String displayInfo() {
         return "Student | Course: " + course +
-                " | Books: " + booksBorrowed;
+               " | Books: " + booksBorrowed;
     }
 }
 
 public class LibraryMember4 {
-
     static String batchPrint(LibraryMember[] members) {
-        StringBuilder result = new StringBuilder();
+        StringBuilder sb = new StringBuilder();
 
         for (LibraryMember member : members) {
-            result.append(member.displayInfo());
+            sb.append(member.displayInfo());
 
             if (member instanceof StudentMember) {
                 StudentMember student = (StudentMember) member;
 
-                result.append(" [Course via downcast: ")
-                      .append(student.course)
-                      .append("]");
+                sb.append(" [Course via downcast: ")
+                  .append(student.course)
+                  .append("]");
             }
 
-            result.append(" | ");
+            sb.append(" | ");
         }
 
-        return result.toString();
+        return sb.toString();
     }
 
     public static void main(String[] args) {

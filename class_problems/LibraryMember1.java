@@ -5,12 +5,10 @@ class LibraryMember {
 
     public LibraryMember(String memberId, int borrowLimit) {
         if (memberId == null || memberId.trim().length() < 4) {
-            throw new IllegalArgumentException("Invalid member ID");
+            throw new IllegalArgumentException();
         }
-
         this.memberId = memberId;
         this.borrowLimit = borrowLimit;
-        this.booksBorrowed = 0;
     }
 
     public void borrowBook() {
@@ -33,7 +31,7 @@ class StudentMember extends LibraryMember {
     }
 }
 
-public class Main {
+public class LibraryMember1 {
     static String enrollBatch(String[] memberIds, int borrowLimit) {
         int enrolled = 0;
         int rejected = 0;
@@ -52,7 +50,6 @@ public class Main {
 
     public static void main(String[] args) {
         String[] ids = {"STU1", "LB1", "STU2", " ", "STU3"};
-
         System.out.println(enrollBatch(ids, 3));
     }
 }

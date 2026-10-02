@@ -5,9 +5,8 @@ class LibraryMember {
 
     public LibraryMember(String memberId, int borrowLimit) {
         if (memberId == null || memberId.trim().length() < 4) {
-            throw new IllegalArgumentException("Invalid member ID");
+            throw new IllegalArgumentException();
         }
-
         this.memberId = memberId;
         this.borrowLimit = borrowLimit;
     }
@@ -22,8 +21,8 @@ class LibraryMember {
         return booksBorrowed;
     }
 
-    public void displayInfo() {
-        System.out.println("General Member | Books Borrowed: " + booksBorrowed);
+    public String displayInfo() {
+        return "General Member | Books Borrowed: " + booksBorrowed;
     }
 }
 
@@ -36,9 +35,9 @@ class StudentMember extends LibraryMember {
     }
 
     @Override
-    public void displayInfo() {
-        System.out.println("Student Member | Course: " + course +
-                " | Books Borrowed: " + booksBorrowed);
+    public String displayInfo() {
+        return "Student Member | Course: " + course +
+               " | Books Borrowed: " + booksBorrowed;
     }
 }
 
@@ -52,10 +51,10 @@ class HonorsStudentMember extends StudentMember {
     }
 
     @Override
-    public void displayInfo() {
-        System.out.println("Honors Student Member | Course: " + course +
-                " | Bonus Limit: " + bonusLimit +
-                " | Books Borrowed: " + booksBorrowed);
+    public String displayInfo() {
+        return "Honors Student Member | Course: " + course +
+               " | Bonus Limit: " + bonusLimit +
+               " | Books Borrowed: " + booksBorrowed;
     }
 }
 
@@ -68,21 +67,18 @@ class FacultyMember extends LibraryMember {
     }
 
     @Override
-    public void displayInfo() {
-        System.out.println("Faculty Member | Department: " + department +
-                " | Books Borrowed: " + booksBorrowed);
+    public String displayInfo() {
+        return "Faculty Member | Department: " + department +
+               " | Books Borrowed: " + booksBorrowed;
     }
 }
 
 public class LibraryMember2 {
-
     static String classifyGeneration(LibraryMember member) {
         if (member instanceof HonorsStudentMember) {
             return "Multilevel descendant (3 generations deep)";
         } else if (member instanceof FacultyMember) {
             return "Hierarchical sibling (independent branch)";
-        } else if (member instanceof StudentMember) {
-            return "Student branch";
         } else {
             return "General Member";
         }
@@ -99,25 +95,14 @@ public class LibraryMember2 {
     }
 
     public static void main(String[] args) {
-        LibraryMember general =
-                new LibraryMember("STU1", 3);
-
         StudentMember student =
-                new StudentMember("STU2", 3, "CSE");
+            new StudentMember("STU2", 3, "CSE");
 
         HonorsStudentMember honors =
-                new HonorsStudentMember("STU3", 3, "ECE", 2);
+            new HonorsStudentMember("STU3", 3, "ECE", 2);
 
         FacultyMember faculty =
-                new FacultyMember("STU4", 5, "Physics");
-
-        general.displayInfo();
-        student.displayInfo();
-        honors.displayInfo();
-        faculty.displayInfo();
-
-        System.out.println(classifyGeneration(honors));
-        System.out.println(classifyGeneration(faculty));
+            new FacultyMember("STU4", 5, "Physics");
 
         student.borrowBook();
         student.borrowBook();
@@ -128,10 +113,10 @@ public class LibraryMember2 {
         faculty.borrowBook();
         faculty.borrowBook();
 
-        LibraryMember[] members = {
-            student, honors, faculty
-        };
+        LibraryMember[] members = {student, honors, faculty};
 
+        System.out.println(classifyGeneration(honors));
+        System.out.println(classifyGeneration(faculty));
         System.out.println(getTotalBooksBorrowed(members));
     }
 }

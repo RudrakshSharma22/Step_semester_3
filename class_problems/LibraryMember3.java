@@ -3,7 +3,6 @@ import java.util.Arrays;
 class LibraryMember {
     protected String memberId;
     protected int borrowLimit;
-    protected int booksBorrowed;
 
     private int[] fineHistory = new int[10];
     private int fineCount = 0;
@@ -11,7 +10,7 @@ class LibraryMember {
 
     public LibraryMember(String memberId, int borrowLimit) {
         if (memberId == null || memberId.trim().length() < 4) {
-            throw new IllegalArgumentException("Invalid member ID");
+            throw new IllegalArgumentException();
         }
 
         this.memberId = memberId;
@@ -19,11 +18,9 @@ class LibraryMember {
     }
 
     protected void chargeFine(int amount) {
-        if (fineCount < fineHistory.length) {
-            fineHistory[fineCount] = amount;
-            fineCount++;
-            totalFine += amount;
-        }
+        fineHistory[fineCount] = amount;
+        fineCount++;
+        totalFine += amount;
     }
 
     public int[] getFineHistory() {
@@ -52,14 +49,13 @@ class StudentMember extends LibraryMember {
 public class LibraryMember3 {
     public static void main(String[] args) {
         StudentMember s =
-                new StudentMember("STU5", 3, "CSE");
+            new StudentMember("STU5", 3, "CSE");
 
         s.chargeFine(100);
 
         System.out.println(s.getTotalFine());
 
         int[] history = s.getFineHistory();
-
         history[0] = 999;
 
         System.out.println(Arrays.toString(s.getFineHistory()));

@@ -1,16 +1,17 @@
 class LibraryMember {
-    protected int borrowLimit;
-    protected int booksBorrowed;
-
-    private static int memberCount = 0;
+    private static int count = 0;
 
     public final String memberNumber;
 
+    protected int borrowLimit;
+    protected int booksBorrowed;
+
     public LibraryMember(int borrowLimit) {
         this.borrowLimit = borrowLimit;
-        memberCount++;
 
-        memberNumber = "LIB-" + (100 + memberCount);
+        count++;
+
+        memberNumber = "LIB-" + (100 + count);
     }
 
     public void borrowBook() {
@@ -33,13 +34,13 @@ class LibraryMember {
         }
 
         return code.charAt(0) == 'R'
-                && Character.isDigit(code.charAt(1))
-                && Character.isDigit(code.charAt(2))
-                && Character.isUpperCase(code.charAt(3));
+            && Character.isDigit(code.charAt(1))
+            && Character.isDigit(code.charAt(2))
+            && Character.isUpperCase(code.charAt(3));
     }
 
     static int getMembersEnrolled() {
-        return memberCount;
+        return count;
     }
 }
 
@@ -53,7 +54,6 @@ class FacultyMember extends LibraryMember {
 }
 
 public class LibraryMember5 {
-
     static String processNightlyAudit(LibraryMember[] members) {
         int processed = 0;
         int nullSkipped = 0;
@@ -61,7 +61,6 @@ public class LibraryMember5 {
         int regular = 0;
 
         for (LibraryMember member : members) {
-
             if (member == null) {
                 nullSkipped++;
                 continue;
@@ -77,9 +76,9 @@ public class LibraryMember5 {
         }
 
         return processed + " processed | " +
-                nullSkipped + " null skipped | " +
-                faculty + " faculty | " +
-                regular + " regular";
+               nullSkipped + " null skipped | " +
+               faculty + " faculty | " +
+               regular + " regular";
     }
 
     public static void main(String[] args) {
@@ -89,15 +88,15 @@ public class LibraryMember5 {
         System.out.println(LibraryMember.getMembersEnrolled());
 
         System.out.println(
-                LibraryMember.isValidRenewalCode("R12A")
+            LibraryMember.isValidRenewalCode("R12A")
         );
 
         System.out.println(
-                LibraryMember.isValidRenewalCode("R1A")
+            LibraryMember.isValidRenewalCode("R1A")
         );
 
         System.out.println(
-                LibraryMember.isValidRenewalCode("X12A")
+            LibraryMember.isValidRenewalCode("X12A")
         );
 
         m1.borrowBook();
@@ -111,8 +110,6 @@ public class LibraryMember5 {
             new LibraryMember(3)
         };
 
-        System.out.println(
-                processNightlyAudit(members)
-        );
+        System.out.println(processNightlyAudit(members));
     }
 }
