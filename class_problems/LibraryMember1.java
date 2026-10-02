@@ -31,7 +31,7 @@ class StudentMember extends LibraryMember {
     }
 }
 
-public class Main {
+public class LibraryMember1 {
     static String enrollBatch(String[] memberIds, int borrowLimit) {
         int enrolled = 0;
         int rejected = 0;
