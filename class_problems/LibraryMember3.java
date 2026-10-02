@@ -46,7 +46,7 @@ class StudentMember extends LibraryMember {
     }
 }
 
-public class Main {
+public class LibraryMember3 {
     public static void main(String[] args) {
         StudentMember s =
             new StudentMember("STU5", 3, "CSE");
