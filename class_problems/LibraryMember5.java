@@ -53,7 +53,7 @@ class FacultyMember extends LibraryMember {
     }
 }
 
-public class Main {
+public class LibraryMember5 {
     static String processNightlyAudit(LibraryMember[] members) {
         int processed = 0;
         int nullSkipped = 0;
