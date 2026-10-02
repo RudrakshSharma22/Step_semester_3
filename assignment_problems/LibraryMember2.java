@@ -74,7 +74,7 @@ class FacultyMember extends LibraryMember {
     }
 }
 
-public class LibraryMember2 {
+public class Main {
 
     static String classifyGeneration(LibraryMember member) {
         if (member instanceof HonorsStudentMember) {

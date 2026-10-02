@@ -38,7 +38,7 @@ class StudentMember extends LibraryMember {
     }
 }
 
-public class LibraryMember4 {
+public class Main {
 
     static String batchPrint(LibraryMember[] members) {
         StringBuilder result = new StringBuilder();
