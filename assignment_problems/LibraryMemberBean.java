@@ -1,13 +1,10 @@
-class LibraryMember {
-
+class LibraryMemberBean {
     private String membershipId;
     private String name;
     private boolean premiumMember;
     private String securityAnswer;
 
-    private boolean membershipIdSet = false;
-
-    public LibraryMember() {
+    public LibraryMemberBean() {
     }
 
     public String getMembershipId() {
@@ -15,10 +12,8 @@ class LibraryMember {
     }
 
     public void setMembershipId(String id) {
-        if (!membershipIdSet) {
+        if (membershipId == null)
             membershipId = id;
-            membershipIdSet = true;
-        }
     }
 
     public String getName() {
@@ -39,5 +34,22 @@ class LibraryMember {
 
     public void setSecurityAnswer(String answer) {
         securityAnswer = Integer.toHexString(answer.hashCode());
+    }
+
+    public static void main(String[] args) {
+        LibraryMemberBean m = new LibraryMemberBean();
+
+        m.setMembershipId("LIB-8841");
+        m.setName("Priya Nair");
+        m.setPremiumMember(true);
+
+        System.out.println(m.getMembershipId());
+
+        m.setMembershipId("FAKE-0000");
+        System.out.println(m.getMembershipId());
+
+        System.out.println(m.isPremiumMember());
+
+        m.setSecurityAnswer("BlueMountain");
     }
 }
